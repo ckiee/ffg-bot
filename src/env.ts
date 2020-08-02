@@ -14,5 +14,8 @@ export const autorole = process.env.AUTOROLE!.split(",").map(x => {
 });
 
 export const dbUrl = process.env.DB_URL!;
+export const sheetId = process.env.SHEET_ID!;
+export const googleEmail = process.env.GOOGLE_EMAIL!;
+export const googleKey = process.env.GOOGLE_KEY!;
 
-export const TS_BLUE = "#007ACC";
+export const BLUE = "#007ACC";
