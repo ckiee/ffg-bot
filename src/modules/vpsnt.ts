@@ -1,9 +1,4 @@
-import {
-	command,
-	default as CookiecordClient,
-	Module,
-	listener,
-} from "cookiecord";
+import { default as CookiecordClient, listener, Module } from "cookiecord";
 import { Message } from "discord.js";
 
 export default class VpsntModule extends Module {
@@ -15,7 +10,7 @@ export default class VpsntModule extends Module {
 	async onMessage(msg: Message) {
 		if (
 			msg.author.bot ||
-			msg.content.toLowerCase().includes("vps.ronthecookie.me")
+			!msg.content.toLowerCase().includes("vps.ronthecookie.me")
 		)
 			return;
 		await msg.delete({ reason: "vpsn't" });
