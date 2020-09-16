@@ -1,5 +1,5 @@
 import { token, botAdmins } from "./env";
-import CookiecordClient from "cookiecord";
+import CookiecordClient, { HelpModule } from "cookiecord";
 import { Intents } from "discord.js";
 import { getDB } from "./db";
 const client = new CookiecordClient(
@@ -14,6 +14,7 @@ const client = new CookiecordClient(
 );
 const prod = process.env.NODE_ENV == "production";
 
+client.registerModule(HelpModule);
 client.loadModulesFromFolder("src/modules");
 if (!prod) client.reloadModulesFromFolder("src/modules");
 
