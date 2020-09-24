@@ -65,7 +65,7 @@ export default class EtcModule extends Module {
 	}
 	@listener({ event: "message" })
 	async hippityhoppity(msg: Message) {
-		if (this.client.botAdmins.includes(msg.author.id)) return;
+		if (!this.client.botAdmins.includes(msg.author.id)) return;
 		if (
 			!msg.content.startsWith(
 				"Hippity hoppity this channel is now my property"
