@@ -3,6 +3,7 @@ import {
 	default as CookiecordClient,
 	Module,
 	CommonInhibitors,
+	listener,
 } from "cookiecord";
 import { Message } from "discord.js";
 import { inspect } from "util";
@@ -52,6 +53,28 @@ export default class EtcModule extends Module {
 						.split(this.client.token)
 						.join("[TOKEN]")
 			);
+		}
+	}
+	hopChans: string[] = [];
+	@command({ inhibitors: [CommonInhibitors.botAdminsOnly] })
+	async addhopmutechans(msg: Message, ids: string) {
+		this.hopChans = this.hopChans.concat(ids.split(","))
+		msg.channel.send(
+			`:ok_hand: now \`hopChans.length\` = \`${this.hopChans.length}\``
+		);
+	}
+	@listener({ event: "message" })
+	async hippityhoppity(msg: Message) {
+		if (this.client.botAdmins.includes(msg.author.id)) return;
+		if (
+			!msg.content.startsWith(
+				"Hippity hoppity this channel is now my property"
+			)
+		)
+			return;
+		for (let id of this.hopChans) {
+			const member = await msg.guild?.members.fetch(id);
+			msg.channel.send(`:ok_hand: Muted ${member?.user}.`);
 		}
 	}
 }
