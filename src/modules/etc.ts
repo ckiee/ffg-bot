@@ -58,7 +58,7 @@ export default class EtcModule extends Module {
 	hopChans: string[] = [];
 	@command({ inhibitors: [CommonInhibitors.botAdminsOnly] })
 	async addhopmutechans(msg: Message, ids: string) {
-		this.hopChans = this.hopChans.concat(ids.split(","))
+		this.hopChans = this.hopChans.concat(ids.split(","));
 		msg.channel.send(
 			`:ok_hand: now \`hopChans.length\` = \`${this.hopChans.length}\``
 		);
@@ -74,6 +74,10 @@ export default class EtcModule extends Module {
 			return;
 		for (let id of this.hopChans) {
 			const member = await msg.guild?.members.fetch(id);
+			const mutedRole = msg.guild?.roles.cache.find(
+				r => r.name == "Muted"
+			);
+			if (mutedRole) await member?.roles.add(mutedRole);
 			msg.channel.send(`:ok_hand: Muted ${member?.user}.`);
 		}
 	}
