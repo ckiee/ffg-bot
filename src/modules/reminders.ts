@@ -56,7 +56,7 @@ export default class ReminderModule extends Module {
 			await msg.channel.send(
 				`:ok_hand: set a reminder for ${prettyMs(
 					dur
-				)} to remind you about "${splitArgs.join("")}".`
+				)} to remind you about "${splitArgs.join(" ")}".`
 			);
 		}
 
