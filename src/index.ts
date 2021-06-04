@@ -2,6 +2,12 @@ import { token, botAdmins } from "./env";
 import CookiecordClient, { HelpModule } from "cookiecord";
 import { Intents } from "discord.js";
 import { getDB } from "./db";
+import SheetModule from "./modules/sheet";
+import EtcModule from "./modules/etc";
+import ReminderModule from "./modules/reminders";
+import VpsntModule from "./modules/vpsnt";
+import AutoroleModule from "./modules/autorole";
+import PollModule from "./modules/poll";
 const client = new CookiecordClient(
 	{
 		botAdmins,
@@ -15,8 +21,15 @@ const client = new CookiecordClient(
 const prod = process.env.NODE_ENV == "production";
 
 client.registerModule(HelpModule);
-client.loadModulesFromFolder("src/modules");
-if (!prod) client.reloadModulesFromFolder("src/modules");
+
+if (!prod) {
+	client.loadModulesFromFolder("src/modules");
+	client.reloadModulesFromFolder("src/modules");
+} else {
+	for (const mod of [PollModule, AutoroleModule, VpsntModule, ReminderModule, EtcModule, SheetModule]) {
+		client.registerModule(mod);
+	};
+}
 
 getDB(); // prepare the db for later
 client.login(token);
