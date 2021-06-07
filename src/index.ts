@@ -1,7 +1,6 @@
 import { token, botAdmins } from "./env";
 import CookiecordClient, { HelpModule } from "cookiecord";
 import { Intents } from "discord.js";
-import { getDB } from "./db";
 import SheetModule from "./modules/sheet";
 import EtcModule from "./modules/etc";
 import ReminderModule from "./modules/reminders";
@@ -31,6 +30,5 @@ if (!prod) {
 	};
 }
 
-getDB(); // prepare the db for later
 client.login(token);
 client.on("ready", () => console.log(`Logged in as ${client.user?.tag}`));
