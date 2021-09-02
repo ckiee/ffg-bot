@@ -7,6 +7,7 @@ import ReminderModule from "./modules/reminders";
 import VpsntModule from "./modules/vpsnt";
 import AutoroleModule from "./modules/autorole";
 import PollModule from "./modules/poll";
+import JoinRoleModule from "./modules/joinrole";
 const client = new CookiecordClient(
 	{
 		botAdmins,
@@ -25,7 +26,7 @@ if (!prod) {
 	client.loadModulesFromFolder("src/modules");
 	client.reloadModulesFromFolder("src/modules");
 } else {
-	for (const mod of [PollModule, AutoroleModule, VpsntModule, ReminderModule, EtcModule, SheetModule]) {
+	for (const mod of [PollModule, AutoroleModule, VpsntModule, ReminderModule, EtcModule, SheetModule, JoinRoleModule]) {
 		client.registerModule(mod);
 	};
 }

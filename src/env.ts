@@ -12,6 +12,7 @@ export const autorole = process.env.AUTOROLE!.split(",").map(x => {
 		autoRemove: autoRemove == "true",
 	};
 });
+export const joinRoleID = process.env.JOIN_ROLE_ID!;
 
 export const dbUrl = process.env.DB_URL!;
 export const sheetId = process.env.SHEET_ID!;
