@@ -14,7 +14,7 @@ const client = new CookiecordClient(
 		prefix: "!",
 	},
 	{
-		ws: { intents: Intents.NON_PRIVILEGED },
+		ws: { intents: Intents.NON_PRIVILEGED | Intents.FLAGS.GUILD_MEMBERS },
 		partials: ["REACTION", "MESSAGE", "USER", "CHANNEL"],
 	}
 );
