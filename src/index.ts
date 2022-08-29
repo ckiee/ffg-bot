@@ -1,7 +1,6 @@
 import { token, botAdmins } from "./env";
 import CookiecordClient, { HelpModule } from "cookiecord";
 import { Intents } from "discord.js";
-import SheetModule from "./modules/sheet";
 import EtcModule from "./modules/etc";
 import ReminderModule from "./modules/reminders";
 import VpsntModule from "./modules/vpsnt";
@@ -26,7 +25,7 @@ if (!prod) {
 	client.loadModulesFromFolder("src/modules");
 	client.reloadModulesFromFolder("src/modules");
 } else {
-	for (const mod of [PollModule, AutoroleModule, VpsntModule, ReminderModule, EtcModule, SheetModule, JoinRoleModule]) {
+	for (const mod of [PollModule, AutoroleModule, VpsntModule, ReminderModule, EtcModule, JoinRoleModule]) {
 		client.registerModule(mod);
 	};
 }
