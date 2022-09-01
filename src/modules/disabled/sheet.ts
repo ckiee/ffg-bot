@@ -6,7 +6,7 @@ import {
 } from "cookiecord";
 import { Message } from "discord.js";
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import { sheetId, googleEmail, googleKey } from "../env";
+import { sheetId, googleEmail, googleKey } from "../../env";
 
 export default class SheetModule extends Module {
 	doc = new GoogleSpreadsheet(sheetId);
